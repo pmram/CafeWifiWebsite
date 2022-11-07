@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% from 'bootstrap/form.html' import render_form , render_field %}
+{% block title %}Delete Cafe{% endblock %}
+
+
+{% block content %}
+<div class="container p-10">
+    <div class="col col-sm-6">
+        <form method="post">
+            {{ render_form(form) }}
+        </form>
+    </div>
+</div>
+
+{% endblock %}

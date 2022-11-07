@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Cafes and Wifi{% endblock %}
+
+
+{% block content %}
+<div class="col">
+    <div class="container p-4">
+    <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3 g-4">
+        {% for cafe in cafes %}
+        <div class="col">
+            <div class="card mb-0 h-100">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{ cafe.img_url}}" class="img-fluid img-fit rounded-start" alt="Cafe photo">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ cafe.name }}</h5>
+                            <div class="row">
+                                <div class="col-md-12 col-xl-6">
+                                    <i class="fa-sharp fa-solid fa-chair"></i>  {{ cafe.seats }}
+                                </div>
+                                <div class="col-md-12 col-xl-6">
+                                    {% if cafe.has_sockets %}
+                                        <i class="fa-solid fa-plug-circle-check"></i>
+                                    {% else %}
+                                        <i class="fa-solid fa-plug-circle-xmark"></i>
+                                    {% endif %}
+                                    {% if cafe.has_wifi %}
+                                        <img src="https://img.icons8.com/windows/20/null/wifi--v1.png"/>
+                                    {% else %}
+                                        <img src="https://img.icons8.com/windows/20/null/wifi-off.png"/>
+                                    {% endif %}
+                                    {% if cafe.has_toilet %}
+                                        <img src="https://img.icons8.com/windows/20/null/toilet-bowl.png"/>
+                                    {% endif %}
+                                    {% if cafe.can_take_calls %}
+                                        <img src="https://img.icons8.com/windows/20/null/ringer-volume.png"/>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p class="card-text"><i class="fa-solid fa-mug-saucer"></i>  {{ cafe.coffee_price }}</small></p>
+                            </div>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    <a
+                                        href="{{ cafe.map_url }}">
+                                        <i class="fa-solid fa-location-arrow"></i>  {{ cafe.location }}
+                                    </a>
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+</div>
+<div class="col-4"></div>
+{% endblock %}
